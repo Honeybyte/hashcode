@@ -5,9 +5,6 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws IOException {
         InputImpl input = new InputImpl(args[0]);
-        for (VertPicture pic : input.getPictures()) {
-            System.out.println(pic.getTags().size());
-        }
         List<Slide> slides = new VertToSlides(input.getPictures()).perform();
         slides.addAll(input.getSlide());
         Collections.sort(slides);
