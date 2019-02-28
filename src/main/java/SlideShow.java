@@ -86,9 +86,34 @@ public class SlideShow {
                 show.add(0, slides.get(bestIndex[0]));
             if(bestIndex[1] != -1)
                 show.add(slides.get(bestIndex[1]));
-
-            //remove
+            if(bestIndex[0] != -1 && bestIndex[1] != -1) {
+                if(bestIndex[0] < bestIndex[1]) {
+                    slides.remove(bestIndex[1]);
+                    slides.remove(bestIndex[0]);
+                }
+                else {
+                    slides.remove(bestIndex[0]);
+                    slides.remove(bestIndex[1]);
+                }
+            }
+            else if(bestIndex[0] != -1)
+                slides.remove(bestIndex[0]);
+            else if(bestIndex[1] != -1)
+                slides.remove(bestIndex[1]);
+            else
+                throw new RuntimeException("unknown error: neither left nor right slide selected!");
         }
         return show;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
