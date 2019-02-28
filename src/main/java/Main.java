@@ -1,7 +1,11 @@
+import java.io.IOException;
+
 public class Main {
+    public static void main(String[] args) throws IOException {
+        Input input = Input.parse("in/test.txt");
 
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
+        // ...
+
+        Output.perform("tmp/output.txt");
     }
-
 }
