@@ -1,12 +1,11 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public class SlideImpl implements Slide{
 
-    public List<String> tags;
+    private List<String> tags;
     private int[] IDs;
 
-    public SlideImpl(ArrayList<String> tags, int[] IDs){
+    SlideImpl(List<String> tags, int[] IDs){
         this.IDs = IDs;
         this.tags = tags;
     }
@@ -23,6 +22,26 @@ public class SlideImpl implements Slide{
 
     @Override
     public int compareTo(Slide slide) {
-        return 0;
+        int same = 0;
+        int setThis = 0;
+        int setOther = 0;
+
+        while(same + setThis < this.tags.size() || same + setOther < slide.getTags().size()){
+
+            if(same + setThis >= this.tags.size())
+                setOther++;
+            else if(same + setOther >= slide.getTags().size())
+                setThis++;
+            else{
+                int result = this.tags.get(same + setThis).compareTo(slide.getTags().get(same + setOther));
+                if(result == 0)
+                    same++;
+                else if(result < 0)
+                    setThis++;
+                else
+                    setOther++;
+            }
+        }
+        return Math.min(Math.min(same, setThis), setOther);
     }
 }

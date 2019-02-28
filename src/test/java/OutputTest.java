@@ -52,12 +52,7 @@ public class OutputTest {
         }
 
         @Override
-        public String[] getTags() {
-            throw new UnsupportedOperationException();
-        }
-
-        @Override
-        public void setTags(String[] tags) {
+        public List<String> getTags() {
             throw new UnsupportedOperationException();
         }
 
