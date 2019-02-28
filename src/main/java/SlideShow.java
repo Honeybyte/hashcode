@@ -102,6 +102,8 @@ public class SlideShow {
                 slides.remove(bestIndex[1]);
             else
                 throw new RuntimeException("unknown error: neither left nor right slide selected!");
+
+
         }
         return show;
     }
