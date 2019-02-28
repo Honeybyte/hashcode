@@ -1,12 +1,11 @@
-public interface Slide {
+public interface Slide extends Comparable<Slide> {
     public int[] getIDs();
-    public void setIDs();
 
     public int getTagCount();
-    public void setTagCount();
+    public void setTagCount(int tagCount);
 
     public String[] getTags();
-    public void setTags();
+    public void setTags(String[] tags);
 
     public int compareTo(Slide slide);
 }
