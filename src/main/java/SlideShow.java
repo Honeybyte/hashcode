@@ -26,54 +26,47 @@ public class SlideShow {
         //iterate through the slide-array and attach the two best slides to the output
         show.add(slides.get(slides.size() - 1));
         slides.remove((slides.size() - 1));
-        while(slides.size() > 0){
+        while (slides.size() > 0) {
             bestIndex[0] = -1;
             bestIndex[1] = -1;
             bestValue[0] = -1;
             bestValue[1] = -1;
-            for(int i = slides.size() - 1; i >= 0; i--){
+            for (int i = slides.size() - 1; i >= 0; i--) {
 
                 //check if the current slide suits the left-side of the slideshow or the right-side
                 int resLeft = slides.get(i).compareTo(show.get(0));
                 int resRight = slides.get(i).compareTo(show.get(show.size() - 1));
-                if(resLeft > resRight) {
-                    if(resLeft >= bestValue[0]) {
+                if (resLeft > resRight) {
+                    if (resLeft >= bestValue[0]) {
                         bestValue[0] = resLeft;
                         bestIndex[0] = i;
-                    }
-                    else if(resRight >= bestValue[1]) {
+                    } else if (resRight >= bestValue[1]) {
                         bestValue[1] = resRight;
                         bestIndex[1] = i;
                     }
-                }
-                else if(resRight > resLeft) {
-                    if(resRight >= bestValue[1]) {
+                } else if (resRight > resLeft) {
+                    if (resRight >= bestValue[1]) {
                         bestValue[1] = resRight;
                         bestIndex[1] = i;
-                    }
-                    else if(resLeft >= bestValue[0]) {
+                    } else if (resLeft >= bestValue[0]) {
                         bestValue[0] = resLeft;
                         bestIndex[0] = i;
                     }
-                }
-                else {
+                } else {
                     //both sides are equally suited
-                    if(resLeft < bestValue[0]){
-                        if(resLeft >= bestValue[1]){
+                    if (resLeft < bestValue[0]) {
+                        if (resLeft >= bestValue[1]) {
                             bestValue[1] = resLeft;
                             bestIndex[i] = i;
                         }
-                    }
-                    else if(resLeft < bestValue[1]){
+                    } else if (resLeft < bestValue[1]) {
                         bestValue[0] = resLeft;
                         bestIndex[0] = i;
-                    }
-                    else {
-                        if(bestValue[0] <= bestValue[1]){
+                    } else {
+                        if (bestValue[0] <= bestValue[1]) {
                             bestValue[0] = resLeft;
                             bestIndex[0] = i;
-                        }
-                        else {
+                        } else {
                             bestValue[1] = resLeft;
                             bestIndex[1] = i;
                         }
@@ -82,23 +75,21 @@ public class SlideShow {
             }
 
             //add the slides to the output and remove them from the input
-            if(bestIndex[0] != -1)
+            if (bestIndex[0] != -1)
                 show.add(0, slides.get(bestIndex[0]));
-            if(bestIndex[1] != -1)
+            if (bestIndex[1] != -1)
                 show.add(slides.get(bestIndex[1]));
-            if(bestIndex[0] != -1 && bestIndex[1] != -1) {
-                if(bestIndex[0] < bestIndex[1]) {
+            if (bestIndex[0] != -1 && bestIndex[1] != -1) {
+                if (bestIndex[0] < bestIndex[1]) {
                     slides.remove(bestIndex[1]);
                     slides.remove(bestIndex[0]);
-                }
-                else {
+                } else {
                     slides.remove(bestIndex[0]);
                     slides.remove(bestIndex[1]);
                 }
-            }
-            else if(bestIndex[0] != -1)
+            } else if (bestIndex[0] != -1)
                 slides.remove(bestIndex[0]);
-            else if(bestIndex[1] != -1)
+            else if (bestIndex[1] != -1)
                 slides.remove(bestIndex[1]);
             else
                 throw new RuntimeException("unknown error: neither left nor right slide selected!");
