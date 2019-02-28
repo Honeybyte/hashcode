@@ -33,6 +33,15 @@ public class VertToSlides {
     private int[] slideCandidates() {
         int[] result = new int[2];
 
+        if (pictures.size() < 2)
+            return result;
+        else if (pictures.size() == 2) {
+            result[0] = 1;
+            result[1] = 0;
+            return result;
+        }
+
+
         result[0] = pictures.size() - 1;
         int index = pictures.size() - 2;
         int currentMax = 0;
