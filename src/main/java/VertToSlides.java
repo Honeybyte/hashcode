@@ -3,12 +3,14 @@ import java.util.Collections;
 import java.util.List;
 
 public class VertToSlides {
-    private static List<Slide> slides = new ArrayList<>();
-    private static List<VertPicture> pictures = new ArrayList<>();
+    private List<Slide> slides = new ArrayList<>();
+    private List<VertPicture> pictures;
 
-    public static List<Slide> perform(List<VertPicture> ps) {
-        pictures = ps;
+    public VertToSlides(List<VertPicture> pictures) {
+        this.pictures = pictures;
+    }
 
+    public List<Slide> perform() {
         while (pictures.size() > 1)
             createSlide();
 
@@ -16,7 +18,7 @@ public class VertToSlides {
         return slides;
     }
 
-    private static void createSlide() {
+    private void createSlide() {
         int[] cs = slideCandidates();
 
         slides.add(new Slide(mergeTags(pictures.get(cs[0]), pictures.get(cs[1])), mergeIDs(pictures.get(cs[0]), pictures.get(cs[1]))));
@@ -25,7 +27,7 @@ public class VertToSlides {
         pictures.remove(cs[1]);
     }
 
-    private static int[] slideCandidates() {
+    private int[] slideCandidates() {
         int[] result = new int[2];
 
         result[0] = pictures.size() - 1;
