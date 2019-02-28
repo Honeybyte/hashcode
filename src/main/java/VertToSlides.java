@@ -44,12 +44,11 @@ public class VertToSlides {
             return result;
         }
 
-
         result[0] = pictures.size() - 1;
         int index = pictures.size() - 2;
         int currentMax = 0;
         result[1] = -1;
-        while (result[1] < 0 || pictures.get(result[0]).getTags().size() + pictures.get(index).getTags().size() > currentMax) {
+        while (index >= 0 && (result[1] < 0 || pictures.get(result[0]).getTags().size() + pictures.get(index).getTags().size() > currentMax)) {
             List<String> tempTags = mergeTags(pictures.get(result[0]), pictures.get(index));
             if (tempTags.size() > currentMax) {
                 result[1] = index;
