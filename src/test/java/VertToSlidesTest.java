@@ -2,6 +2,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class VertToSlidesTest {
@@ -20,14 +21,16 @@ public class VertToSlidesTest {
         p1.getTags().add("c");
         pictures.add(p1);
         VertPicture p2 = new VertPictureImpl(2);
-        p2.getTags().add("a");
-        p2.getTags().add("b");
+        p2.getTags().add("e");
+        p2.getTags().add("f");
         pictures.add(p2);
         VertPicture p3 = new VertPictureImpl(3);
         p3.getTags().add("a");
         pictures.add(p3);
         VertPicture p4 = new VertPictureImpl(4);
         pictures.add(p4);
+
+        Collections.sort(pictures);
 
         List<Slide> slides = new VertToSlides(pictures).perform();
         for (Slide slide : slides)

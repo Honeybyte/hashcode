@@ -38,11 +38,10 @@ public class VertToSlides {
         int currentMax = 0;
         result[1] = -1;
         while (result[1] < 0 || pictures.get(result[0]).getTags().size() + pictures.get(index).getTags().size() > currentMax) {
-            System.out.println(index);
-            if (pictures.get(result[0]).compareTo(pictures.get(index)) > currentMax) {
+            List<String> tempTags = mergeTags(pictures.get(result[0]), pictures.get(index));
+            if (tempTags.size() > currentMax) {
                 result[1] = index;
-                currentMax = mergeTags(pictures.get(result[0]), pictures.get(result[1])).size();
-                System.out.println(currentMax);
+                currentMax = tempTags.size();
             }
             index--;
         }
