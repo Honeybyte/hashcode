@@ -1,8 +1,9 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class SlideImpl implements Slide{
 
-    public ArrayList<String> tags;
+    public List<String> tags;
     private int[] IDs;
 
     public SlideImpl(ArrayList<String> tags, int[] IDs){
@@ -16,7 +17,7 @@ public class SlideImpl implements Slide{
     }
 
     @Override
-    public ArrayList<String> getTags() {
+    public List<String> getTags() {
         return this.tags;
     }
 

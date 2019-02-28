@@ -1,7 +1,8 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class VertPictureImpl implements VertPicture {
-    private ArrayList<String> tags = new ArrayList<>();
+    private List<String> tags = new ArrayList<>();
     private int ID;
 
     public VertPictureImpl (int ID){
@@ -14,7 +15,7 @@ public class VertPictureImpl implements VertPicture {
     }
 
     @Override
-    public ArrayList<String> getTags() {
+    public List<String> getTags() {
         return this.tags;
     }
 

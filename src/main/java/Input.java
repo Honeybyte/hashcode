@@ -1,6 +1,6 @@
-import java.util.ArrayList;
+import java.util.List;
 
 public interface Input {
-    public ArrayList<SlideImpl> getSlide();
-    public ArrayList<VertPictureImpl> getPictures();
+    public List<SlideImpl> getSlide();
+    public List<VertPictureImpl> getPictures();
 }
