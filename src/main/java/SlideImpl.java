@@ -3,10 +3,10 @@ import java.util.List;
 
 public class SlideImpl implements Slide{
 
-    public List<String> tags;
+    private List<String> tags;
     private int[] IDs;
 
-    public SlideImpl(ArrayList<String> tags, int[] IDs){
+    SlideImpl(List<String> tags, int[] IDs){
         this.IDs = IDs;
         this.tags = tags;
     }
