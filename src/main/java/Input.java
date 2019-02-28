@@ -1,5 +1,6 @@
-public interface Input {
-    public Slide[] getSlide();
+import java.util.List;
 
-    public VertPicture[] getPictures();
+public interface Input {
+    public List<SlideImpl> getSlide();
+    public List<VertPictureImpl> getPictures();
 }

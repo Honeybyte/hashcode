@@ -6,8 +6,12 @@ import java.io.IOException;
 public class InputTest {
     @Test
     public void parseReturnsInput() throws IOException {
-        Input expected = new Input();
-
-        Assert.assertTrue(expected.equals(Input.parse("in/test.txt")));
+        InputImpl test1 = new InputImpl("in/test.txt");
+        for(VertPictureImpl t: test1.getPictures()){
+            for (String s:t.getTags()) {
+                System.out.print(s + " ");
+            }
+            System.out.println();
+        }
     }
 }

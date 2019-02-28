@@ -6,6 +6,6 @@ public class Main {
 
         // ...
 
-        Output.perform("tmp/output.txt");
+        //Output.perform("tmp/output.txt");
     }
 }
