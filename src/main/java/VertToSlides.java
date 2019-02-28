@@ -21,6 +21,9 @@ public class VertToSlides {
     private void createSlide() {
         int[] cs = slideCandidates();
 
+        if (cs[0] == 0 && cs[1] == 1)
+            return;
+
         slides.add(new SlideImpl(
                 mergeTags(pictures.get(cs[0]), pictures.get(cs[1])),
                 mergeIDs(pictures.get(cs[0]), pictures.get(cs[1])))
