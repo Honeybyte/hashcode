@@ -1,5 +1,7 @@
-public interface Input {
-    public Slide[] getSlide();
+import java.util.ArrayList;
 
-    public VertPicture[] getPictures();
+public interface Input {
+    public ArrayList<SlideImpl> getSlide();
+
+    public ArrayList<VertPictureImpl> getPictures();
 }

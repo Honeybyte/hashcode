@@ -1,10 +1,11 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class InputImpl implements Input {
-    private VertPicture[] verts;
-    private Slide[] slides;
+    private ArrayList<VertPictureImpl> verts = new ArrayList<>();
+    private ArrayList<SlideImpl> slides = new ArrayList<>();
 
     public InputImpl(String path) {
         try {
@@ -20,19 +21,25 @@ public class InputImpl implements Input {
         String line;
         line = br.readLine();
         int count = Integer.parseInt(line);
-        while (null != (line = br.readLine())) {
+        for (int x = 0; x < count; x++){
+            line = br.readLine();
+            String[] parted = line.split(" ");
+            if (parted[0] == "H"){
+                Slide toAdd = new Sli
+            }else {
 
+            }
         }
         br.close();
     }
 
     @Override
-    public Slide[] getSlide() {
+    public ArrayList<SlideImpl> getSlide() {
         return this.slides;
     }
 
     @Override
-    public VertPicture[] getPictures() {
+    public ArrayList<VertPictureImpl> getPictures() {
         return this.verts;
     }
 }
