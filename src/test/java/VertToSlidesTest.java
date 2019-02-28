@@ -1,13 +1,13 @@
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class VertToSlidesTest {
     @Test
-    public void example() {
+    public void test1() {
         List<VertPicture> pictures = new ArrayList<>();
         VertPicture p0 = new VertPictureImpl(0);
         p0.getTags().add("a");
@@ -33,7 +33,8 @@ public class VertToSlidesTest {
         Collections.sort(pictures);
 
         List<Slide> slides = new VertToSlides(pictures).perform();
-        for (Slide slide : slides)
-            System.out.println(slide.getTags().size());
+
+        Assert.assertEquals(6, slides.get(0).getTags().size());
+        Assert.assertEquals(3, slides.get(1).getTags().size());
     }
 }
