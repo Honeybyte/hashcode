@@ -1,6 +1,6 @@
 import java.util.List;
 
 public interface Input {
-    public List<SlideImpl> getSlide();
-    public List<VertPictureImpl> getPictures();
+    public List<Slide> getSlide();
+    public List<VertPicture> getPictures();
 }

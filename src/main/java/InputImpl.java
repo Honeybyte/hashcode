@@ -6,21 +6,21 @@ import java.util.Comparator;
 import java.util.List;
 
 public class InputImpl implements Input {
-    private List<VertPictureImpl> verts = new ArrayList<>();
-    private List<SlideImpl> slides = new ArrayList<>();
+    private List<VertPicture> verts = new ArrayList<>();
+    private List<Slide> slides = new ArrayList<>();
 
     public InputImpl(String path) {
         try {
             parse(path);
-            verts.sort(new Comparator<VertPictureImpl>() {
+            verts.sort(new Comparator<VertPicture>() {
                 @Override
-                public int compare(VertPictureImpl o1, VertPictureImpl o2) {
+                public int compare(VertPicture o1, VertPicture o2) {
                     return o1.getTags().size() - o2.getTags().size();
                 }
             });
-            slides.sort(new Comparator<SlideImpl>() {
+            slides.sort(new Comparator<Slide>() {
                 @Override
-                public int compare(SlideImpl o1, SlideImpl o2) {
+                public int compare(Slide o1, Slide o2) {
                     return o1.getTags().size() - o2.getTags().size();
                 }
             });
@@ -59,12 +59,12 @@ public class InputImpl implements Input {
     }
 
     @Override
-    public List<SlideImpl> getSlide() {
+    public List<Slide> getSlide() {
         return this.slides;
     }
 
     @Override
-    public List<VertPictureImpl> getPictures() {
+    public List<VertPicture> getPictures() {
         return this.verts;
     }
 }
