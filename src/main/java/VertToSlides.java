@@ -21,7 +21,10 @@ public class VertToSlides {
     private void createSlide() {
         int[] cs = slideCandidates();
 
-        slides.add(new Slide(mergeTags(pictures.get(cs[0]), pictures.get(cs[1])), mergeIDs(pictures.get(cs[0]), pictures.get(cs[1]))));
+        slides.add(new SlideImpl(
+                mergeTags(pictures.get(cs[0]), pictures.get(cs[1])),
+                mergeIDs(pictures.get(cs[0]), pictures.get(cs[1])))
+        );
 
         pictures.remove(cs[0]);
         pictures.remove(cs[1]);
@@ -55,14 +58,11 @@ public class VertToSlides {
         return tags;
     }
 
-    private static List<String> mergeIDs(VertPicture p1, VertPicture p2) {
-        ArrayList<String> IDs = new ArrayList<>();
+    private static int[] mergeIDs(VertPicture p1, VertPicture p2) {
+        int[] IDs = new int[2];
 
-        for (String ID : p1.getTags())
-            IDs.add(ID);
-        for (String ID : p2.getTags())
-            if (!IDs.contains(ID))
-                IDs.add(ID);
+        IDs[0] = p1.getID();
+        IDs[1] = p2.getID();
 
         return IDs;
     }
