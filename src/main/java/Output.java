@@ -1,25 +1,21 @@
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.util.List;
 
-public class Output {
-    public static void perform(String path, Slide[] slides) throws IOException {
-        File file = createFile(path);
-        writeToFile(file);
-    }
+class Output {
 
-    public static void writeToFile(File file) throws IOException {
-        BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-//    bw.write("output");
-        bw.close();
-    }
-
-    public static File createFile(String path) throws IOException {
-        File file = new File(path);
-        file.getParentFile().mkdirs();
-        file.createNewFile();
-
-        return file;
+    static void perform(String path, List<Slide> slides) throws IOException {
+        try (PrintWriter writer = new PrintWriter(path)) {
+            char NL = '\n';
+            writer.print(slides.size());
+            writer.print(NL);
+            for (Slide slide : slides) {
+                int[] ids = slide.getIDs();
+                writer.print(ids[0]);
+                if (ids.length == 2) {
+                    writer.print(" " + ids[1]);
+                }
+                writer.print(NL);
+            }
+        }
     }
 }
