@@ -19,7 +19,7 @@ public class SlideShow {
     //--------------------------------------------------------
     public List<Slide> perform() {
         //variables
-        List<Slide> show = new ArrayList<Slide>();
+        List<Slide> show = new ArrayList<>();
         int bestIndex[] = new int[2];
         int bestValue[] = new int[2];
 
