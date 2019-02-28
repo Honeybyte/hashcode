@@ -4,27 +4,28 @@ import java.util.List;
 
 public class VertToSlides {
     private static List<Slide> slides = new ArrayList<>();
+    private static List<VertPicture> pictures = new ArrayList<>();
 
-    public static List<Slide> perform(List<VertPicture> pictures) {
-        while (pictures.size() > 1) {
-            pictures = createSlide(pictures);
-        }
+    public static List<Slide> perform(List<VertPicture> ps) {
+        pictures = ps;
+
+        while (pictures.size() > 1)
+            createSlide();
 
         Collections.sort(slides);
         return slides;
     }
 
-    private static List<VertPicture> createSlide(List<VertPicture> pictures) {
-        int[] cs = slideCandidates(pictures);
+    private static void createSlide() {
+        int[] cs = slideCandidates();
 
         slides.add(new Slide(mergeTags(pictures.get(cs[0]), pictures.get(cs[1])), mergeIDs(pictures.get(cs[0]), pictures.get(cs[1]))));
 
         pictures.remove(cs[0]);
         pictures.remove(cs[1]);
-        return pictures;
     }
 
-    private static int[] slideCandidates(List<VertPicture> pictures) {
+    private static int[] slideCandidates() {
         int[] result = new int[2];
 
         result[0] = pictures.size() - 1;
