@@ -3,8 +3,9 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class InputImpl implements Input {
-    public InputImpl() {
+    public InputImpl(String path) {
         // ...
+//        parse()
     }
 
     public boolean equals(Input input) {

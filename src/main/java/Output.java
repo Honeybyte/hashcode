@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Output {
-    public static void perform(String path) throws IOException {
+    public static void perform(String path, Slide[] slides) throws IOException {
         File file = createFile(path);
         writeToFile(file);
     }
