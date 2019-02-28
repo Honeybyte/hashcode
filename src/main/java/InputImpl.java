@@ -1,24 +1,55 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class InputImpl implements Input {
+    private List<VertPictureImpl> verts = new ArrayList<>();
+    private List<SlideImpl> slides = new ArrayList<>();
+
     public InputImpl(String path) {
-        // ...
-//        parse()
+        try {
+            parse(path);
+        }catch (IOException e){
+            System.out.println("Error while parsing!");
+        }
     }
 
-    public boolean equals(Input input) {
-        return true;
-    }
-
-    public static void parse(String path) throws IOException {
+    public void parse(String path) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(path));
 
         String line;
-        while (null != (line = br.readLine())) {
-            // ...
+        line = br.readLine();
+        int count = Integer.parseInt(line);
+        for (int x = 0; x < count; x++){
+            line = br.readLine();
+            String[] parted = line.split(" ");
+            if (parted[0].equals("H")){
+                ArrayList<String> tags = new ArrayList<>();
+                for (int y = 2; y < parted.length; y++){
+                    tags.add(parted[y]);
+                }
+                SlideImpl toAdd = new SlideImpl(tags, new int[]{x});
+                this.slides.add(toAdd);
+            }else {
+                VertPictureImpl pic = new VertPictureImpl(x);
+                for (int y = 2; y < parted.length; y++) {
+                    pic.getTags().add(parted[y]);
+                }
+                this.verts.add(pic);
+            }
         }
         br.close();
+    }
+
+    @Override
+    public List<SlideImpl> getSlide() {
+        return this.slides;
+    }
+
+    @Override
+    public List<VertPictureImpl> getPictures() {
+        return this.verts;
     }
 }

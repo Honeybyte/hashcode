@@ -7,6 +7,6 @@ public class Main {
 
         List<Slide> slides = new VertToSlides(pictures).perform();
 
-        Output.perform("tmp/output.txt");
+        //Output.perform("tmp/output.txt");
     }
 }
