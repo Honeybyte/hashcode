@@ -6,7 +6,7 @@ public class SlideImpl implements Slide{
     public List<String> tags;
     private int[] IDs;
 
-    public SlideImpl(ArrayList<String> tags, int[] IDs){
+    public SlideImpl(List<String> tags, int[] IDs){
         this.IDs = IDs;
         this.tags = tags;
     }
