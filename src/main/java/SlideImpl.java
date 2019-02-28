@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class SlideImpl implements Slide{
 
-    public ArrayList<String> tags = new ArrayList<>();
+    public ArrayList<String> tags;
     private int[] IDs;
 
     public SlideImpl(ArrayList<String> tags, int[] IDs){
