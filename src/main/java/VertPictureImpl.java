@@ -21,6 +21,6 @@ public class VertPictureImpl implements VertPicture {
 
     @Override
     public int compareTo(VertPicture picture) {
-        return 0;
+        return this.getTags().size() - picture.getTags().size();
     }
 }
