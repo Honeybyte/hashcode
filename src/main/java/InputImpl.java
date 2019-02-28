@@ -15,7 +15,7 @@ public class InputImpl implements Input {
         }
     }
 
-    public static void parse(String path) throws IOException {
+    public void parse(String path) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(path));
 
         String line;
@@ -25,9 +25,18 @@ public class InputImpl implements Input {
             line = br.readLine();
             String[] parted = line.split(" ");
             if (parted[0] == "H"){
-                Slide toAdd = new Sli
+                ArrayList<String> tags = new ArrayList<>();
+                for (int y = 2; y < parted.length; y++){
+                    tags.add(parted[y]);
+                }
+                SlideImpl toAdd = new SlideImpl(tags, new int[]{x});
+                this.slides.add(toAdd);
             }else {
-
+                VertPictureImpl pic = new VertPictureImpl(x);
+                for (int y = 2; y < parted.length; y++) {
+                    pic.getTags().add(parted[y]);
+                }
+                this.verts.add(pic);
             }
         }
         br.close();

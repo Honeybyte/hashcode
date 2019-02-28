@@ -3,20 +3,21 @@ import java.util.ArrayList;
 public class SlideImpl implements Slide{
 
     public ArrayList<String> tags = new ArrayList<>();
+    private int[] IDs;
+
+    public SlideImpl(ArrayList<String> tags, int[] IDs){
+        this.IDs = IDs;
+        this.tags = tags;
+    }
 
     @Override
     public int[] getIDs() {
-        return new int[0];
+        return this.IDs;
     }
 
     @Override
-    public String[] getTags() {
-        return new String[0];
-    }
-
-    @Override
-    public void setTags(String[] tags) {
-
+    public ArrayList<String> getTags() {
+        return this.tags;
     }
 
     @Override

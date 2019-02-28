@@ -1,11 +1,16 @@
 import java.util.ArrayList;
 
 public class VertPictureImpl implements VertPicture {
-    public ArrayList<String> tags = new ArrayList<>();
+    private ArrayList<String> tags = new ArrayList<>();
+    private int ID;
+
+    public VertPictureImpl (int ID){
+        this.ID = ID;
+    }
 
     @Override
     public int getID() {
-        return 0;
+        return this.ID;
     }
 
     @Override
