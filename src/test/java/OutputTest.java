@@ -56,7 +56,6 @@ public class OutputTest {
             throw new UnsupportedOperationException();
         }
 
-
         @Override
         public int compareTo(Slide slide) {
             throw new UnsupportedOperationException();

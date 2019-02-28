@@ -1,9 +1,8 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public class SlideImpl implements Slide{
 
-    public List<String> tags;
+    private List<String> tags;
     private int[] IDs;
 
     public SlideImpl(List<String> tags, int[] IDs){
