@@ -52,14 +52,10 @@ public class OutputTest {
         }
 
         @Override
-        public String[] getTags() {
+        public List<String> getTags() {
             throw new UnsupportedOperationException();
         }
 
-        @Override
-        public void setTags(String[] tags) {
-            throw new UnsupportedOperationException();
-        }
 
         @Override
         public int compareTo(Slide slide) {

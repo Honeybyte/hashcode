@@ -57,7 +57,7 @@ public class SlideShow {
                     if (resLeft < bestValue[0]) {
                         if (resLeft >= bestValue[1]) {
                             bestValue[1] = resLeft;
-                            bestIndex[i] = i;
+                            bestIndex[1] = i;
                         }
                     } else if (resLeft < bestValue[1]) {
                         bestValue[0] = resLeft;
