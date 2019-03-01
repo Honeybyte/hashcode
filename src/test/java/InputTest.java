@@ -9,12 +9,12 @@ public class InputTest {
         InputImpl test1 = new InputImpl("in/test.txt");
         StringBuilder VertTags = new StringBuilder();
         StringBuilder HorTags = new StringBuilder();
-        for(VertPictureImpl t: test1.getPictures()){
+        for(VertPicture t: test1.getPictures()){
             for (String s:t.getTags()) {
                 VertTags.append(s);
             }
         }
-        for (SlideImpl sl:test1.getSlide()) {
+        for (Slide sl:test1.getSlide()) {
             for (String s:sl.getTags()){
                 HorTags.append(s);
             }

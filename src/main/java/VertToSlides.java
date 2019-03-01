@@ -11,6 +11,7 @@ public class VertToSlides {
     }
 
     public List<Slide> perform() {
+        // create slides as long as there are at least two vertical pictures left to pair
         while (pictures.size() > 1)
             createSlide();
 
@@ -19,52 +20,45 @@ public class VertToSlides {
     }
 
     private void createSlide() {
-        int[] cs = slideCandidates();
+        // fix the picture with the most tags
+        VertPicture picture = pictures.remove(pictures.size() - 1);
+        // find the best matching picture
+        VertPicture match = pictures.remove(findMatchFor(picture));
 
-        if (cs[0] == 0 && cs[1] == 1)
-            return;
-
-        slides.add(new SlideImpl(
-                mergeTags(pictures.get(cs[0]), pictures.get(cs[1])),
-                mergeIDs(pictures.get(cs[0]), pictures.get(cs[1])))
+        Slide slide = new SlideImpl(
+                mergeTags(picture, match),
+                mergeIDs(picture, match)
         );
-
-        pictures.remove(cs[0]);
-        pictures.remove(cs[1]);
+        Collections.sort(slide.getTags());
+        slides.add(slide);
     }
 
-    private int[] slideCandidates() {
-        int[] result = new int[2];
+    private int findMatchFor(VertPicture picture) {
+        int match = -1;
+        int tagsOfPair = 0;
 
-        if (pictures.size() < 2)
-            return result;
-        else if (pictures.size() == 2) {
-            result[0] = 1;
-            result[1] = 0;
-            return result;
-        }
+        for (int i = pictures.size() - 1; i >= 0; i--) {
+            // exit if a match has been found and all other possible matches have less tags combined
+            if (match >= 0 && sumTags(picture, pictures.get(i)) <= tagsOfPair)
+                break;
 
-        result[0] = pictures.size() - 1;
-        int index = pictures.size() - 2;
-        int currentMax = 0;
-        result[1] = -1;
-        while (index >= 0 && (result[1] < 0 || pictures.get(result[0]).getTags().size() + pictures.get(index).getTags().size() > currentMax)) {
-            List<String> tempTags = mergeTags(pictures.get(result[0]), pictures.get(index));
-            if (tempTags.size() > currentMax) {
-                result[1] = index;
-                currentMax = tempTags.size();
+            List<String> tempTags = mergeTags(picture, pictures.get(i));
+            if (match < 0 || tempTags.size() > tagsOfPair) {
+                match = i;
+                tagsOfPair = tempTags.size();
             }
-            index--;
         }
 
-        return result;
+        return match;
+    }
+
+    private static int sumTags(VertPicture p1, VertPicture p2) {
+        return p1.getTags().size() + p2.getTags().size();
     }
 
     private static List<String> mergeTags(VertPicture p1, VertPicture p2) {
-        ArrayList<String> tags = new ArrayList<>();
+        ArrayList<String> tags = new ArrayList<>(p1.getTags());
 
-        for (String tag : p1.getTags())
-            tags.add(tag);
         for (String tag : p2.getTags())
             if (!tags.contains(tag))
                 tags.add(tag);
